@@ -1,200 +1,295 @@
 :root{
-  --bg:#f6f7fb;
-  --card:#ffffff;
-  --text:#111827;
-  --muted:#6b7280;
-  --border:#e5e7eb;
+  --bg: #f7f7f8;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --accent: #2563eb;
+
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(17,24,39,0.06);
 }
 
-*{ box-sizing:border-box; }
+*{ box-sizing: border-box; }
 
-body{
-  margin:0;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  padding:16px;
+html, body{
+  margin: 0;
+  padding: 0;
+  background: var(--bg); /* グラデーション撤廃 */
+  color: var(--text);
+  font-family: "Noto Sans JP", system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
 }
 
-h1{
-  font-size:14px;
-  color:var(--muted);
-  font-weight:600;
-  margin:4px 0 12px;
+.container{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px 14px 36px;
 }
 
-/* Card */
+.header{
+  padding: 8px 2px 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hgroup h1{
+  font-size: 18px;
+  margin: 0 0 6px;
+  letter-spacing: 0;
+}
+
+.hgroup p{
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.badge{
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
 .card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:16px;
-  max-width:520px;
-  margin:0 auto;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow); /* 影を浅く */
+  padding: 14px;
 }
 
-/* Sex tabs */
+.section{
+  margin-top: 14px;
+}
+
+.sectionTitle{
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 700;
+  margin: 0 0 10px;
+  letter-spacing: 0.02em;
+}
+
+.row{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 560px){
+  .row.two{ grid-template-columns: 1fr 1fr; }
+}
+
+label{
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+select, input[type="range"]{ width: 100%; }
+
+select{
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+select:focus{
+  border-color: rgba(37,99,235,0.8);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.14);
+}
+
+.rangeWrap{
+  padding: 12px 12px 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff; /* 余計なグラデ排除 */
+}
+
+.rangeTop{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.rangeTop .name{
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.rangeTop .val{
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+input[type="range"]{
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb{
+  appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 999px;
+  background: var(--accent);   /* 2色やめて単色 */
+  box-shadow: 0 1px 2px rgba(17,24,39,0.18);
+}
+input[type="range"]::-moz-range-thumb{
+  width: 18px; height: 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  border: none;
+}
+
 .sexTabs{
-  display:flex;
-  gap:8px;
-  margin-bottom:14px;
+  display: flex;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px;
 }
 
 .sexTab{
-  flex:1;
-  padding:10px 0;
-  border-radius:12px;
-  border:1px solid var(--border);
-  background:#f9fafb;
-  font-size:14px;
-  font-weight:700;
-  color:var(--muted);
-  cursor:pointer;
+  flex: 1;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 10px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--muted);
+  background: transparent;
 }
 
 .sexTab.active{
-  background:#111827;
-  color:#fff;
-  border-color:#111827;
+  color: #fff;
+  background: var(--accent);
 }
 
-/* Form labels */
-label{
-  display:block;
-  font-size:13px;
-  color:var(--muted);
-  margin:10px 0 12px;
+.hr{
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 14px 0;
 }
 
-/* Select */
-select{
-  width:100%;
-  margin-top:8px;
-  padding:12px 12px;
-  border-radius:12px;
-  border:1px solid var(--border);
-  background:#fff;
-  font-size:15px;
-  color:var(--text);
+.resultBlock{
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff; /* 強い色面やめる */
+  padding: 14px;
 }
 
-/* Age rows */
-.value{
-  color:var(--text);
-  font-weight:800;
-  font-size:15px;
-  margin-left:6px;
-}
-
-/* Range */
-input[type="range"]{
-  width:100%;
-  margin-top:10px;
-}
-
-/* Divider */
-hr{
-  border:none;
-  border-top:1px solid var(--border);
-  margin:14px 0;
-}
-
-/* Result */
 .resultTitle{
-  font-size:12px;
-  color:var(--muted);
-  margin:0 0 6px;
-}
-
-#result{
-  font-size:34px;
-  font-weight:900;
-  letter-spacing:0.3px;
-  line-height:1.1;
-  margin:0 0 6px;
-}
-
-/* Rate */
-.rate{
-  margin:0;
-  font-size:13px;
-  color:var(--muted);
-}
-
-#rateValue{
-  font-weight:800;
-  color:var(--text);
-}
-
-/* Small screens comfort */
-@media (max-width:360px){
-  #result{ font-size:30px; }
-  select{ font-size:14px; }
-}
-
-/* Optional section */
-.resultTitle + label {
-  opacity: 0.95;
-}
-
-.note {
-  margin-top: 6px;
-  font-size: 12px;
+  margin: 0 0 6px;
   color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
-/* Sub-main card (Income section) */
+.resultNum{
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+
+.rateLine,
+.rate{
+  margin-top: 10px;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.rateLine span,
+.rate span{
+  color: var(--text);
+}
+
 .subCard{
   margin-top: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
   padding: 14px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-  background: #f9fafb;
+  box-shadow: none; /* カードinカードの影を消す */
 }
 
 .subHeader{
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: baseline;
   gap: 10px;
   margin-bottom: 10px;
 }
 
 .subTitle{
-  font-size: 14px;
   font-weight: 900;
-  color: var(--text);
+  font-size: 14px;
 }
 
 .subDesc{
-  font-size: 12px;
   color: var(--muted);
-  text-align: right;
-}
-
-/* Make income result feel important but secondary */
-#resultIncome{
-  font-size: 26px;
-  font-weight: 900;
-  line-height: 1.1;
-  margin: 0 0 6px;
-}
-
-/* --- 注釈用（最下部でOK） --- */
-.footnote {
   font-size: 12px;
-  color: #777;
-  margin-top: 24px;
   line-height: 1.5;
 }
 
-.note {
+.note{
+  color: var(--muted);
   font-size: 12px;
-  color: #666;
-  margin-top: 8px;
+  line-height: 1.6;
+  margin: 10px 0 0;
 }
 
-.details summary {
-  font-size: 13px;
-  cursor: pointer;
+.footnote{
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line); /* dashedやめる */
+  background: #fff;              /* 半透明やめる */
+}
+
+.small{
+  font-size: 12px;
+  color: var(--muted);
+}
+
+#resultIncome{
+  font-size: 27px;
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+.metaList{
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.metaList li{
+  line-height: 1.6;
+  white-space: nowrap;
 }

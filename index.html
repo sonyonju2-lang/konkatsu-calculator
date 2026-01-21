@@ -1,97 +1,129 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>婚活市場 該当人数計算機</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <h1>婚活市場 該当人数計算機</h1>
+    <title>未婚人口統計</title>
 
-  <div class="card">
+    <link rel="stylesheet" href="style.css" />
 
-<div class="sexTabs">
-  <button class="sexTab active" data-sex="male">男性</button>
-  <button class="sexTab" data-sex="female">女性</button>
-</div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<label>
-  地域：
-  <select id="region"></select>
-</label>
+  <body>
+    <main class="container">
+      <header class="header">
+        <div class="hgroup">
+          <h1>未婚人口統計</h1>
+          <ul class="metaList">
+           <li>18歳以上の未婚者（離別・死別・不詳除外）</li>
+           <li>未婚人口：令和2年 国勢調査</li>
+           <li>年収分布：国税庁・厚労省統計（推定）</li>
+          </ul>
+        </div>
+        <div class="badge">BETA</div>
+      </header>
 
-<label>
-  都道府県：
-  <select id="pref"></select>
-</label>
+      <section class="card">
+        <div class="sexTabs">
+          <button class="sexTab active" data-sex="male" type="button">男性</button>
+          <button class="sexTab" data-sex="female" type="button">女性</button>
+        </div>
 
- <label>
-    年齢（下限）：
-    <span class="value" id="ageMinValue">28</span> 歳
-    <input type="range" id="ageMin" min="18" max="100" value="28">
-  </label>
+        <section class="section" aria-label="地域">
+          <div class="sectionTitle">地域</div>
+          <div class="row two">
+            <div>
+              <label for="region">地域：</label>
+              <select id="region"></select>
+            </div>
+            <div>
+              <label for="pref">都道府県：</label>
+              <select id="pref"></select>
+            </div>
+          </div>
+        </section>
 
-  <label>
-    年齢（上限）：
-    <span class="value" id="ageMaxValue">38</span> 歳
-    <input type="range" id="ageMax" min="18" max="100" value="38">
-  </label>
+        <section class="section" aria-label="年齢">
+          <div class="sectionTitle">年齢</div>
 
-  <hr>
+          <div class="rangeWrap">
+            <div class="rangeTop">
+              <div class="name">年齢（下限）</div>
+              <div class="val"><span id="ageMinValue">28</span> 歳</div>
+            </div>
+            <input type="range" id="ageMin" min="18" max="100" value="28" />
+          </div>
 
-  <p class="resultTitle">推定該当人数</p>
-<div id="result">0 人</div>
+          <div style="height: 10px"></div>
 
-<p class="rate">
-  該当率：
-  <span id="rateValue">–</span> %
-</p>
+          <div class="rangeWrap">
+            <div class="rangeTop">
+              <div class="name">年齢（上限）</div>
+              <div class="val"><span id="ageMaxValue">38</span> 歳</div>
+            </div>
+            <input type="range" id="ageMax" min="18" max="100" value="38" />
+          </div>
+        </section>
 
-<hr>
+        <hr class="hr" />
 
-<p class="resultTitle">詳細条件（オプション）</p>
+        <section class="resultBlock" aria-label="結果">
+          <p class="resultTitle">推定該当人数</p>
+          <div id="result" class="resultNum">0 人</div>
+          <div class="rateLine">該当率： <span id="rateValue">–</span> %</div>
+        </section>
 
-<div class="subCard" id="incomeCard">
-  <div class="subHeader">
-    <div class="subTitle">年収（推定）</div>
-    <div class="subDesc">統計分布から推定して絞り込み</div>
-  </div>
+        <br />
 
-  <label>
-    年収帯：
-    <select id="income">
-     <option value="none">指定なし</option>
-     <option value="~200">～200万円</option>
-     <option value="200-400">200～400万円</option>
-     <option value="400-600">400～600万円</option>
-     <option value="600-800">600～800万円</option>
-     <option value="800-1000">800～1000万円</option>
-     <option value="1000+">1000万円～</option>
-</select>
+        <p class="resultTitle">詳細条件（オプション）</p>
 
-  </label>
+        <section class="subCard" id="incomeCard" aria-label="年収（推定）">
+          <div class="subHeader">
+            <div class="subTitle">年収（推定）</div>
+            <div class="subDesc">統計分布から推定して絞り込み</div>
+          </div>
 
-  <p class="resultTitle" style="margin-top:12px;">年収条件適用後（推定）</p>
-  <div id="resultIncome">–</div>
+          <label for="income">
+            年収帯：
+            <select id="income">
+              <option value="none">指定なし</option>
+              <option value="~200">～200万円</option>
+              <option value="200-400">200～400万円</option>
+              <option value="400-600">400～600万円</option>
+              <option value="600-800">600～800万円</option>
+              <option value="800-1000">800～1000万円</option>
+              <option value="1000+">1000万円～</option>
+            </select>
+          </label>
 
-  <p class="rate">
-    該当率（年収適用・推定）：
-    <span id="rateIncomeValue">–</span> %
-  </p>
+          <p class="resultTitle" style="margin-top: 12px">年収条件適用後（推定）</p>
+          <div id="resultIncome">–</div>
 
- <p class="note">
-  ※ 年収条件は国税庁・厚生労働省の統計を基にした推定です。実際の収入を保証するものではありません。
- </p>
+          <p class="rate">
+            該当率（年収適用・推定）：
+            <span id="rateIncomeValue">–</span> %
+          </p>
 
-<footer class="footnote">
-  ※ 本ツールは国勢調査・国税庁等の公的統計を基に、条件別に推定した人数・割合を表示しています。<br>
-  ※ 未婚人口は「一度も結婚していない人」を対象としており、離別・死別は含んでいません。<br>
-  ※ 表示される年収は実測値ではなく、性別・年齢別の統計分布からの推定です。
-</footer>
+          <p class="note">
+            ※ 年収条件は国税庁・厚生労働省の統計を基にした推定です。実際の収入を保証するものではありません。
+          </p>
+        </section>
 
+        <footer class="footnote">
+          ※ 本ツールは国勢調査・国税庁等の公的統計を基に、条件別に推定した人数・割合を表示しています。<br />
+          ※ 未婚人口は「一度も結婚していない人」を対象としており、離別・死別は含んでいません。<br />
+          ※ 表示される年収は実測値ではなく、性別・年齢別の統計分布からの推定です。
+        </footer>
+      </section>
+    </main>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

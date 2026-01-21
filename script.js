@@ -311,6 +311,7 @@ if (incomeSelect) {
     rateValue.textContent = formatPercent(rate); // 小さくなりやすいので4桁
   } else {
     rateValue.textContent = "–";
+
   }
 
   // ---- income result (sub-main) ----
