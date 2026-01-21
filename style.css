@@ -35,7 +35,7 @@ html, body{
 }
 
 .hgroup h1{
-  font-size: 18px;
+  font-size: 27px;
   margin: 0 0 6px;
   letter-spacing: 0;
 }
@@ -292,4 +292,33 @@ input[type="range"]::-moz-range-thumb{
 .metaList li{
   line-height: 1.6;
   white-space: nowrap;
+}
+
+.header{
+  background: linear-gradient(
+    135deg,
+    #2563eb 0%,
+    #1e40af 100%
+  );
+  border-radius: 16px;
+  padding: 16px 14px 14px;
+  color: #ffffff;
+}
+
+/* タイトル */
+.header h1{
+  color: #ffffff;
+}
+
+/* サブテキスト */
+.header .metaList,
+.header .metaList li{
+  color: rgba(255,255,255,0.85);
+}
+
+/* BETAバッジ（背景が青になるので反転） */
+.header .badge{
+  background: rgba(255,255,255,0.18);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.35);
 }
