@@ -228,17 +228,18 @@ function toAgeBand(age) {
   const a = Number(age);
 
   if (a <= 19) return "18-19";
-  if (a <= 24) return "20～24";
-  if (a <= 29) return "25～29";
-  if (a <= 34) return "30～34";
-  if (a <= 39) return "35～39";
-  if (a <= 44) return "40～44";
-  if (a <= 49) return "45～49";
-  if (a <= 54) return "50～54";
-  if (a <= 59) return "55～59";
-  if (a <= 64) return "60～64";
-  if (a <= 69) return "65～69";
-  return "70+";
+  if (a <= 24) return "20-24";
+  if (a <= 29) return "25-29";
+  if (a <= 34) return "30-34";
+  if (a <= 39) return "35-39";
+  if (a <= 44) return "40-44";
+  if (a <= 49) return "45-49";
+  if (a <= 54) return "50-54";
+  if (a <= 59) return "55-59";
+  if (a <= 64) return "60-64";
+  if (a <= 69) return "65-69";
+  if (a <= 74) return "70-74";
+  return "75+";
 }
 
 
